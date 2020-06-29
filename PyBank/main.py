@@ -60,7 +60,7 @@ with open(csvpath) as csvfile:
         Dates.append(str(row[0]))
 
 Raw_Greatest_Increase_In_Profits_Date = str(Dates[25])
-First_Formatter = Raw_Greatest_Increase_In_Profits_Date.replace("12-","")
+First_Formatter = Raw_Greatest_Increase_In_Profits_Date.split("")
 Second_Formatter = Raw_Greatest_Increase_In_Profits_Date.replace("12-Feb","-2012")
 Final_Greatest_Increase_In_Profits_Date = str(First_Formatter) + str(Second_Formatter)
 

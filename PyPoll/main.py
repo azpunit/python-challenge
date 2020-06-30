@@ -1,6 +1,7 @@
 # The following code allowed us to locate and create the files that we needed for this assignment, namely, csv and text ones. 
 import os
 import csv
+import collections
 
 # The following code allowed us to locate our election_data.csv excel file.
 csvpath = os.path.join('/Users/azpunit/Desktop/python-challenge/PyPoll/Resources/election_data.csv')
@@ -11,15 +12,15 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader)
     Total_Of_Voters = len(list(csvreader))
 
-# The following code allowed us to create a list of the candidates who received votes.
-List_Of_Candidates = ["Khan", "Correy", "Li", "O'Tooley"]
-
-# The following code allowed us to create all the lists that helped us store our values found into variables.
+# The following code allowed us to create some lists that helped us store the results that we found into variables.
 List_Of_Voters = []
 List_Of_Khan_Voters = []
 List_Of_Correy_Voters = []
 List_Of_Li_Voters = []
 List_Of_O_Tooley_Voters = []
+
+# The following code allowed us to create a list of the candidates who received votes.
+List_Of_Candidates = ["Khan", "Correy", "Li", "O'Tooley"]
 
 # The following code allowed to use loops and conditionals in order to store the total number of voters for each candidate
 # into variables.
@@ -29,24 +30,24 @@ with open(csvpath) as csvfile:
     for row in csvreader:
         List_Of_Voters.append(row[2])
 
-for First_candidate in List_Of_Voters:
-    if First_candidate == List_Of_Candidates[0]:
-        List_Of_Khan_Voters.append(First_candidate)
+for First_Candidate in List_Of_Voters:
+    if First_Candidate == List_Of_Candidates[0]:
+        List_Of_Khan_Voters.append(First_Candidate)
 Total_Of_Khan_Voters = len(List_Of_Khan_Voters)
 
-for Second_candidate in List_Of_Voters:
-    if Second_candidate == List_Of_Candidates[1]:
-        List_Of_Correy_Voters.append(Second_candidate)
+for Second_Candidate in List_Of_Voters:
+    if Second_Candidate == List_Of_Candidates[1]:
+        List_Of_Correy_Voters.append(Second_Candidate)
 Total_Of_Correy_Voters = len(List_Of_Correy_Voters)
 
-for Third_candidate in List_Of_Voters:
-    if Third_candidate == List_Of_Candidates[2]:
-        List_Of_Li_Voters.append(Third_candidate)
+for Third_Candidate in List_Of_Voters:
+    if Third_Candidate == List_Of_Candidates[2]:
+        List_Of_Li_Voters.append(Third_Candidate)
 Total_Of_Li_Voters = len(List_Of_Li_Voters)
 
-for Fourth_candidate in List_Of_Voters:
-    if Fourth_candidate == List_Of_Candidates[3]:
-        List_Of_O_Tooley_Voters.append(Fourth_candidate)
+for Fourth_Candidate in List_Of_Voters:
+    if Fourth_Candidate == List_Of_Candidates[3]:
+        List_Of_O_Tooley_Voters.append(Fourth_Candidate)
 Total_Of_O_Tooley_Voters = len(List_Of_O_Tooley_Voters)
 
 # The following code allowed us to store the percentage of voters for each candidate into variables.

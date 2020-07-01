@@ -19,8 +19,8 @@ Candidates_Sample_List = []
 Test_Value = [float("inf")]
 Voters_List = []
 
-# The following code allowed us to create a list of the candidates who received votes and store the number votes that each
-# one received.
+# The following code allowed us to create a complete list of the candidates who received votes and to store this list along
+# with the number votes that each one received into a list. 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile)
     csvheader = next(csvreader)
@@ -32,15 +32,16 @@ with open(csvpath) as csvfile:
             Votes_Format[Candidate] = 0
         Votes_Format[Candidate] = Votes_Format[Candidate] + 1
 
+# The following code allowed us to store the winner name into a variable.
 for Candidate, Votes_Number in Votes_Format.items():
     Voters_List.append(Votes_Number)
     if (Test_Value > Voters_List):
         Test_Value = Voters_List
         Winner = str(Candidate)
 
-# The following code allowed us to print our final text similarly to the analysis similarly to the analysis provided to us on
-# our homework prompt. 
-# We also added the percentages of votes each candidate had by directly plugging the formula before printing everyhting.
+# The following code allowed us to print our final text similarly to the analysis provided to us on out homework prompt.
+# We also added the percentages of votes each candidate had by directly plugging the formula that we had to use to find it
+# before printing everyhting.
 print("Election Results")
 print("-------------------------")
 print(f"Total Votes: {Total_Of_Voters}")
@@ -52,10 +53,11 @@ print("-------------------------")
 print(f"Winner: {Winner}")
 print("-------------------------")
 
-# The following code allowed us to create our Results.txt file.
+# The following code allowed us to create the Results.txt file for our PyPoll folder.
 Results = os.path.join('/Users/azpunit/Desktop/python-challenge/PyPoll/Analysis/Results.txt')
 
-# The following code allowed us to write exactly the same text that we previously printed in terminal in the Results.txt file. 
+# The following code allowed us to write exactly the same text that we previously printed in terminal in the Results.txt file of
+# our the PyPoll folder.
 with open(Results, 'w') as text:    
     text.write("Election Results" + str("\n"))
     text.write("-------------------------" + str("\n"))

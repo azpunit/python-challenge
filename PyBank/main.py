@@ -79,7 +79,7 @@ Fifth_String_Formatting = str(Raw_Greatest_Decrease_In_Profits_Date[5])+ str(Raw
 Sixth_String_Formatting = str(Raw_Greatest_Decrease_In_Profits_Date[0]) + str(Raw_Greatest_Decrease_In_Profits_Date[1])
 Final_Greatest_Decrease_In_Profits_Date = str(Fourth_String_Formatting) + str(Fifth_String_Formatting) + str(Sixth_String_Formatting)
 
-#  The following code allowed us to print our final text, including all the previously stored variables, similarly to the analysis
+# The following code allowed us to print our final text, including all the previously stored variables, similarly to the analysis
 # provided to us on our homework prompt. 
 print("Financial Analysis")
 print("----------------------------")
@@ -89,10 +89,11 @@ print(f"Average Change: ${Average_Change}")
 print(f"Greatest Increase in Profits: {Final_Greatest_Increase_In_Profits_Date} (${Greatest_Increase_In_Profits})")
 print(f"Greatest Decrease in Profits: {Final_Greatest_Decrease_In_Profits_Date} (${Greatest_Decrease_In_Profits})")
 
-# The following code allowed us to create our Results.txt file.
+# The following code allowed us to create the Results.txt file for our PyBank folder.
 Results = os.path.join('/Users/azpunit/Desktop/python-challenge/PyBank/Analysis/Results.txt')
 
-# The following code allowed us to write exactly the same text that we previously printed in terminal in the Results.txt file. 
+# The following code allowed us to write exactly the same text that we previously printed in terminal in the Results.txt file of
+# our PyBank folder.
 with open(Results, 'w') as text:    
     text.write("Financial Analysis" + str("\n"))
     text.write("----------------------------" + str("\n"))

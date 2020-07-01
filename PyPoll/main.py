@@ -1,7 +1,6 @@
 # The following code allowed us to locate and create the files that we needed for this assignment, namely, csv and text ones. 
 import os
 import csv
-import collections
 
 # The following code allowed us to locate our election_data.csv excel file.
 csvpath = os.path.join('/Users/azpunit/Desktop/python-challenge/PyPoll/Resources/election_data.csv')

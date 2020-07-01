@@ -11,75 +11,43 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader)
     Total_Of_Voters = len(list(csvreader))
 
-# The following code allowed us to create some lists that helped us store the results that we found into variables.
-List_Of_Voters = []
-List_Of_Khan_Voters = []
-List_Of_Correy_Voters = []
-List_Of_Li_Voters = []
-List_Of_O_Tooley_Voters = []
+# The following code allowed us to create some lists and elements that helped us store the results that we found into lists and
+# variables.
+Total_Votes_Per_Candidate = 0
+Votes_Format = {}
+Candidates_Sample_List = []
+Test_Value = [float("inf")]
+Voters_List = []
 
-# The following code allowed us to create a list of the candidates who received votes.
-List_Of_Candidates = ["Khan", "Correy", "Li", "O'Tooley"]
-
-# The following code allowed to use loops and conditionals in order to store the total number of voters for each candidate
-# into variables.
+# The following code allowed us to create a list of the candidates who received votes and store the number votes that each
+# one received.
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile)
-    csv_header = next(csvreader)
+    csvheader = next(csvreader)
     for row in csvreader:
-        List_Of_Voters.append(row[2])
+        Total_Votes_Per_Candidate += 1
+        Candidate = row[2]
+        if Candidate not in Candidates_Sample_List:
+            Candidates_Sample_List.append(Candidate)
+            Votes_Format[Candidate] = 0
+        Votes_Format[Candidate] = Votes_Format[Candidate] + 1
 
-for First_Candidate in List_Of_Voters:
-    if First_Candidate == List_Of_Candidates[0]:
-        List_Of_Khan_Voters.append(First_Candidate)
-Total_Of_Khan_Voters = len(List_Of_Khan_Voters)
+for Candidate, Votes_Number in Votes_Format.items():
+    Voters_List.append(Votes_Number)
+    if (Test_Value > Voters_List):
+        Test_Value = Voters_List
+        Winner = str(Candidate)
 
-for Second_Candidate in List_Of_Voters:
-    if Second_Candidate == List_Of_Candidates[1]:
-        List_Of_Correy_Voters.append(Second_Candidate)
-Total_Of_Correy_Voters = len(List_Of_Correy_Voters)
-
-for Third_Candidate in List_Of_Voters:
-    if Third_Candidate == List_Of_Candidates[2]:
-        List_Of_Li_Voters.append(Third_Candidate)
-Total_Of_Li_Voters = len(List_Of_Li_Voters)
-
-for Fourth_Candidate in List_Of_Voters:
-    if Fourth_Candidate == List_Of_Candidates[3]:
-        List_Of_O_Tooley_Voters.append(Fourth_Candidate)
-Total_Of_O_Tooley_Voters = len(List_Of_O_Tooley_Voters)
-
-# The following code allowed us to store the percentage of voters for each candidate into variables.
-Percentage_Of_Khan_Voters = str(round((Total_Of_Khan_Voters/Total_Of_Voters)*100, 1)) +"00%"
-Percentage_Of_Correy_Voters = str(round((Total_Of_Correy_Voters/Total_Of_Voters)*100, 1)) +"00%"
-Percentage_Of_Li_Voters = str(round((Total_Of_Li_Voters/Total_Of_Voters)*100, 1)) +"00%"
-Percentage_Of_O_Tooley_Voters = str(round((Total_Of_O_Tooley_Voters/Total_Of_Voters)*100, 1)) +"00%"
-
-# The following code allowed us to use conditionals to store the winner name in function of its popularity into a variable.
-Popularity_Of_Khan = (Total_Of_Khan_Voters/Total_Of_Voters)
-Popularity_Of_Correy = (Total_Of_Correy_Voters/Total_Of_Voters)
-Popularity_Of_Li = (Total_Of_Li_Voters/Total_Of_Voters)
-Popularity_Of_O_Tooley = (Total_Of_O_Tooley_Voters/Total_Of_Voters)
-Popularity_Of_All_Of_The_Candidates = [Popularity_Of_Khan, Popularity_Of_Correy, Popularity_Of_Li, Popularity_Of_O_Tooley]
-if max(Popularity_Of_All_Of_The_Candidates) == Popularity_Of_Khan:
-    Winner = List_Of_Candidates[0]
-elif max(Popularity_Of_All_Of_The_Candidates) == Popularity_Of_Correy:
-    Winner = List_Of_Candidates[1]
-elif max(Popularity_Of_All_Of_The_Candidates) == Popularity_Of_Li:
-    Winner = List_Of_Candidates[2]
-elif max(Popularity_Of_All_Of_The_Candidates) == Popularity_Of_O_Tooley:
-    Winner = List_Of_Candidates[3]
-
-# The following code allowed us to print our final text, including all the previously stored variables, similarly to the analysis
-# provided to us on our homework prompt. 
+# The following code allowed us to print our final text similarly to the analysis similarly to the analysis provided to us on
+# our homework prompt. 
+# We also added the percentages of votes each candidate had by directly plugging the formula before printing everyhting.
 print("Election Results")
 print("-------------------------")
 print(f"Total Votes: {Total_Of_Voters}")
 print("-------------------------")
-print(f"{List_Of_Candidates[0]}: {Percentage_Of_Khan_Voters} ({Total_Of_Khan_Voters})")
-print(f"{List_Of_Candidates[1]}: {Percentage_Of_Correy_Voters} ({Total_Of_Correy_Voters})")
-print(f"{List_Of_Candidates[2]}: {Percentage_Of_Li_Voters} ({Total_Of_Li_Voters})")
-print(f"{List_Of_Candidates[3]}: {Percentage_Of_O_Tooley_Voters} ({Total_Of_O_Tooley_Voters})")
+for Candidate, Votes_Number in Votes_Format.items():
+    Total_Votes_Percentages = str(round(Votes_Number*100/Total_Of_Voters, 3)) +"00%"
+    print(f"{Candidate}: {Total_Votes_Percentages} ({Votes_Number})")
 print("-------------------------")
 print(f"Winner: {Winner}")
 print("-------------------------")
@@ -93,10 +61,9 @@ with open(Results, 'w') as text:
     text.write("-------------------------" + str("\n"))
     text.write(f"Total Votes: {Total_Of_Voters}\n")
     text.write("-------------------------" + str("\n"))
-    text.write(f"{List_Of_Candidates[0]}: {Percentage_Of_Khan_Voters} ({Total_Of_Khan_Voters})\n")
-    text.write(f"{List_Of_Candidates[1]}: {Percentage_Of_Correy_Voters} ({Total_Of_Correy_Voters})\n")
-    text.write(f"{List_Of_Candidates[2]}: {Percentage_Of_Li_Voters} ({Total_Of_Li_Voters})\n")
-    text.write(f"{List_Of_Candidates[3]}: {Percentage_Of_O_Tooley_Voters} ({Total_Of_O_Tooley_Voters})\n")
+    for Candidate, Votes_Number in Votes_Format.items():
+        Total_Votes_Percentages = str(round(Votes_Number*100/Total_Of_Voters, 3)) +"00%"
+        text.write(f"{Candidate}: {Total_Votes_Percentages} ({Votes_Number})\n")
     text.write("-------------------------" + str("\n"))
     text.write(f"Winner: {Winner}\n")
     text.write("-------------------------" + str("\n"))
